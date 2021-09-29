@@ -1,0 +1,51 @@
+﻿@using PagedList.Mvc;
+@model PagedList.IPagedList<Ecommerce.Models.tbl_product>
+
+@{
+    ViewBag.Title = "Adv";
+}
+
+@using (@Html.BeginForm("Adv","User"))
+
+{
+    <div class="form-inline navbar-form navbar-right" style="margin-top:8px">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="search" id="search">
+        <button class="btn btn-warning btn-sm" type="submit">Search</button>
+    </div>
+}
+
+<h2>Adv</h2>
+<link href="~/Content/pagination.css" rel="stylesheet" />
+
+<div class="row" style="margin-bottom:40px">
+   @{int Founditems = 0; }
+    @if (Model != null)
+    {
+        foreach (var item in Model)
+        {
+            Founditems++;
+            <div class="col-lg-4 col-md-4" style="height:200px; margin-top:100px">
+                <img src="@Url.Content(item.prod_img)" style="height:100%; width:100%; border-radius:50px;" />
+                <h4 style="color:#808080; font-family:'Arial Rounded MT'; text-align:center; ">
+                    @Html.ActionLink(item.prod_name, "ViewAd", new { id = item.prod_id })
+                </h4>
+
+            </div>
+        }
+        <h4>@Founditems Results found</h4>
+    }
+
+
+</div>
+
+<div id="container" style="margin-left:20px">
+    <p></p>
+    <p></p>
+    <div class="pagination" style="margin-left:400px">
+        page @(Model.PageCount<Model.PageNumber ? 0: Model.PageNumber)
+        of @Model.PageCount @Html.PagedListPager(Model, Page => Url.Action("Adv", new { Page }))
+    </div>
+
+</div>
+
+</body>

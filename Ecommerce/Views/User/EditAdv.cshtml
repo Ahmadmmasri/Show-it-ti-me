@@ -1,0 +1,69 @@
+﻿@model Ecommerce.Models.tbl_product
+
+@{
+    ViewBag.Title = "EditAdv";
+}
+
+<h2>EditAdv</h2>
+
+@using (Html.BeginForm("EditAdv", "User", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.Action("CategoryList")
+
+
+<div class="form-horizontal">
+    <h4>tbl_product</h4>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+    @Html.HiddenFor(x => x.prod_id)
+
+    <div class="form-group">
+        @Html.ValidationMessageFor(model => model.prod_fk_cate, "", new { @class = "text-danger" })
+        @Html.LabelFor(model => model.prod_fk_cate, "prod_fk_cate", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownListFor(model => model.prod_fk_cate, Session["CateList"] as SelectList, "---select---", htmlAttributes: new { @class = "form-control" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.ValidationMessageFor(model => model.prod_name, "", new { @class = "text-danger" })
+        @Html.LabelFor(model => model.prod_name, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.prod_name, new { htmlAttributes = new { @class = "form-control" } })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.prod_img, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            <input type="file" name="imgfile" value="imgfile" required="required" class="form-control" accept="image/png,image/jpeg" />
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.ValidationMessageFor(model => model.prod_description, "", new { @class = "text-danger" })
+        @Html.LabelFor(model => model.prod_description, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.prod_description, new { htmlAttributes = new { @class = "form-control" } })
+        </div>
+    </div>
+
+
+    @Html.HiddenFor(x => x.prod_fk_user)
+
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Edit" class="btn btn-default" />
+        </div>
+    </div>
+</div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Adv")
+</div>
+
+

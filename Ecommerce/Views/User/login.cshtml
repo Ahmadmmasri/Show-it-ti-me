@@ -1,0 +1,40 @@
+﻿@model Ecommerce.Models.tbl_user
+@{
+    ViewBag.Title = "login";
+}
+<style>
+    form, input {
+        margin: auto;
+        text-align: center;
+        padding-top: 30px;
+    }
+</style>
+
+<p> @ViewBag.username</p>
+
+@using (@Html.BeginForm())
+{
+    <form>
+        <div class="form-group">
+            <span style="color:red"> @Html.ValidationMessageFor(x => x.u_email)</span>
+            <label for="inputEmail">Email</label>
+            @Html.TextBoxFor(x => x.u_email, new { @class = "form-control", id = "inputEmail", placeholder = "Email", type = "email"})
+
+        </div>
+        <div class="form-group">
+            <span style="color:red">@Html.ValidationMessageFor(x => x.u_password)</span>
+            <label for="inputPassword">Password</label>
+            @Html.TextBoxFor(x => x.u_password, new { @class = "form-control", id = "inputPassword", placeholder = "Password", type = "Password" })
+
+        </div>
+        <div class="form-group">
+            <label class="form-check-label"><input type="checkbox"> Remember me</label>
+        </div>
+        <p class="text-danger">@ViewBag.message</p>
+        <button type="submit" value="Login" class="btn btn-success">Login</button>
+    </form>
+    <a href="/User/SignUp">Don't have account?'</a>
+}
+
+
+

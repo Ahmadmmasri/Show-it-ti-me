@@ -1,0 +1,53 @@
+﻿@model Ecommerce.Models.tbl_user
+@{
+    ViewBag.Title = "SignUp";
+}
+<style>
+    form, input {
+        margin: auto;
+        text-align: center;
+        padding-top: 30px;
+    }
+</style>
+
+@using (Html.BeginForm("SignUp", "User", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <form>
+        <div class="form-horizontal">
+            <div class="form-group">
+                <span style="color:red"> @Html.ValidationMessageFor(x => x.u_name)</span>
+                <label for="inputEmail">Name</label>
+                @Html.TextBoxFor(x => x.u_name, new { @class = "form-control", id = "inputName", placeholder = "Name", type = "text" })
+            </div>
+            <div class="form-group">
+                <span style="color:red"> @Html.ValidationMessageFor(x => x.u_email)</span>
+                <label for="inputEmail">Email</label>
+                @Html.TextBoxFor(x => x.u_email, new { @class = "form-control", id = "inputName", placeholder = "Email", type = "email" })
+            </div>
+
+            <div class="form-group">
+                <label for="inputEmail">Phone Number</label>
+                <br />
+                <span style="color:red"> @Html.ValidationMessageFor(x => x.u_contact)</span>
+                @Html.TextBoxFor(x => x.u_contact, new { @class = "form-control", id = "inputName", placeholder = "Phone", type = "phone" })
+
+            </div>
+            <div class="form-group">
+                <span style="color:red">@Html.ValidationMessageFor(x => x.u_password)</span>
+                <label for="inputPassword">Password</label>
+                @Html.TextBoxFor(x => x.u_password, new { @class = "form-control", id = "inputPassword", placeholder = "Password", type = "Password" })
+
+            </div>
+            <div class="form-group">
+                <label>Image</label>
+                <input type="file" name="userImage" value="userImage" required="required" class="form-control" accept="image/png,image/jpeg" />
+            </div>
+
+            <p class="text-success">@ViewBag.message</p>
+            <button type="submit" value="Login" class="btn btn-success">Sign in</button>
+        </div>
+    </form>
+}
+
+
+

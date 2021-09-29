@@ -1,0 +1,40 @@
+﻿@using PagedList.Mvc;
+@model PagedList.IPagedList<Ecommerce.Models.tbl_category>
+@*model IEnumerable<Ecommerce.Models.tbl_category> *@
+
+@{
+    ViewBag.Title = "ViewProduct";
+}
+
+<h2>ViewProduct</h2>
+<link href="~/Content/pagination.css" rel="stylesheet" />
+
+    <div class="row" style="margin-bottom:40px">
+        @if (Model != null)
+        {
+            foreach (var item in Model)
+            {
+                <div class="col-lg-4 col-md-4" style="height:200px; margin-top:100px">
+                    <img src="@Url.Content(item.cate_img)" style="height:100%; width:100%; border-radius:50px;" />
+                    <h4 style="color:#808080; font-family:'Arial Rounded MT'; text-align:center; ">@item.cate_name</h4>
+                    <div style="margin-left:160px;">
+                        @Html.ActionLink("Delete", "Delete", new { id = item.cate_id }, new { @class = "btn btn-danger" })
+                    </div>
+                </div>
+            }
+        }
+
+
+    </div>
+
+    <div id="container" style="margin-left:20px">
+        <p></p>
+        <p></p>
+        <div class="pagination" style="margin-left:400px">
+            page @(Model.PageCount<Model.PageNumber ? 0: Model.PageNumber)
+            of @Model.PageCount @Html.PagedListPager(Model,Page=>Url.Action("ViewProduct", new {Page })) 
+        </div>
+
+    </div>
+
+</body>

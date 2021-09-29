@@ -1,0 +1,48 @@
+﻿@model Ecommerce.Models.AdModel
+
+@{
+    ViewBag.Title = "ViewAd";
+}
+
+<h2>ViewAd</h2>
+
+<h3>@ViewBag.username</h3>
+<link href="~/Content/pagination.css" rel="stylesheet" />
+
+<div class="row" style="margin-bottom:40px">
+    @if (Model != null)
+    {
+
+            <div class="col-lg-4 col-md-4" style="height:100px; margin-top:10px">
+                <div class="row">
+                    <div class="col-lg-10">
+                        <img src="@Url.Content(Model.prod_img)" style="height:100%; width:100%; border-radius:50px;" />
+                    </div>
+                    <div class="col-lg-2" style="margin-top:80px">
+                        <h4 style="color:#808080; font-family:'Arial Rounded MT'; text-align:center; ">
+                            Name: @Model.prod_name
+                        </h4>
+                        <p>details: @Model.prod_description</p>
+
+                        <p>Price: @Model.prod_price$</p>
+                        <p>category: @Model.cate_name</p>
+                        <p>category: @Model.u_contact</p>
+                        <p>category: @Model.prod_id</p>
+                        <br />
+                        @if (Convert.ToInt32(Session["user_id"]) == Convert.ToInt32(Model.prod_fk_user))
+                        {
+                            @Html.ActionLink("Edit Ad", "EditAdv", new { id = Model.prod_id },new { @class = "btn btn-warning" })
+
+                            @Html.ActionLink("Close Ad", "DeleteAdv", new { id = Model.prod_id },new { @class = "btn btn-danger" })
+                        }
+                    </div>
+                </div>
+
+
+            </div>
+    }
+
+
+</div>
+
+
