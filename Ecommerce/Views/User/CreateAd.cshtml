@@ -19,7 +19,7 @@
 
     <div class="form-group">
         @Html.ValidationMessageFor(model => model.prod_fk_cate, "", new { @class = "text-danger" })
-        @Html.LabelFor(model => model.prod_fk_cate, "prod_fk_cate", htmlAttributes: new { @class = "control-label col-md-2" })
+        @Html.LabelFor(model => model.prod_fk_cate, "Product Category", htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
             @Html.DropDownListFor(model => model.prod_fk_cate, Session["CateList"] as SelectList, "---select---", htmlAttributes: new { @class = "form-control" })
         </div>

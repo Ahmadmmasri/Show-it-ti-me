@@ -32,7 +32,7 @@
     <p></p>
     <div class="pagination" style="margin-left:400px">
         page @(Model.PageCount<Model.PageNumber ? 0: Model.PageNumber)
-        of @Model.PageCount @Html.PagedListPager(Model, Page => Url.Action("ViewProduct", new { Page }))
+        of @Model.PageCount @Html.PagedListPager(Model, Page => Url.Action("Index", new { Page }))
     </div>
 
 </div>

@@ -27,10 +27,10 @@ namespace Ecommerce.Controllers
         public ActionResult login(tbl_user value)
         {
             tbl_user User = db.tbl_user.Where(x => x.u_email == value.u_email && x.u_password == value.u_password).FirstOrDefault();
+
             if (User != null)
             {
                 Session["user_id"] = User.u_id.ToString();
-                ViewBag.username = "Welcome" + User.u_name;
                 return RedirectToAction("index");
             }
             else
@@ -71,7 +71,7 @@ namespace Ecommerce.Controllers
 
                     if (extension.ToLower().Equals(".jpg") || extension.ToLower().Equals(".png"))
                     {
-                        _path = "~/UsersPhotos" + Path.GetFileName(DateTime.Now.ToString("dd/MM/yy MM") + Session.SessionID + userImage.FileName).Replace(" ", "").Replace(":", "");
+                        _path = "~/UsersPersonalPhotos/" + Path.GetFileName(DateTime.Now.ToString("dd/MM/yy MM") + Session.SessionID + userImage.FileName).Replace(" ", "").Replace(":", "");
                         userImage.SaveAs(Server.MapPath(_path));
                     }
 
@@ -121,7 +121,7 @@ namespace Ecommerce.Controllers
 
                         if (extension.ToLower().Equals(".jpg") || extension.ToLower().Equals(".png"))
                         {
-                            _path = "~/UsersPhotos" + Path.GetFileName(DateTime.Now.ToString("dd/MM/yy MM") + Session.SessionID + imgfile.FileName).Replace(" ", "").Replace(":", "");
+                            _path = "~/UsersPhotos/" + Path.GetFileName(DateTime.Now.ToString("dd/MM/yy MM") + Session.SessionID + imgfile.FileName).Replace(" ", "").Replace(":", "");
                             imgfile.SaveAs(Server.MapPath(_path));
                         }
 
@@ -186,7 +186,7 @@ namespace Ecommerce.Controllers
 
                         if (extension.ToLower().Equals(".jpg") || extension.ToLower().Equals(".png"))
                         {
-                            _path = "~/UsersPhotos" + Path.GetFileName(DateTime.Now.ToString("dd/MM/yy MM") + Session.SessionID + imgfile.FileName).Replace(" ", "").Replace(":", "");
+                            _path = "~/UsersPhotos/" + Path.GetFileName(DateTime.Now.ToString("dd/MM/yy MM") + Session.SessionID + imgfile.FileName).Replace(" ", "").Replace(":", "");
                             imgfile.SaveAs(Server.MapPath(_path));
                         }
 

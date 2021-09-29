@@ -19,13 +19,14 @@
                 @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
+
                 <ul class="nav navbar-nav">
                     @if (Session["user_id"] != null)
                     {
 
                         <li>@Html.ActionLink("Create Advertise", "CreateAd", "User")</li>
                         <li>@Html.ActionLink("All Advertises", "Index", "User")</li>
-                        <p style="display:inline-block;s float: right; margin-top: 15px; color: #f3f3f3; font-weight: bold;">@Html.ActionLink("Logout", "login", "User")</p>
+                        <p style="display:inline-block; float: right; margin-top: 15px; color: #f3f3f3; font-weight: bold;">@Html.ActionLink("Logout", "login", "User")</p>
                     }
                     else if (Session["ad_id"] != null)
                     {

@@ -32,7 +32,8 @@ namespace Ecommerce.Controllers
             if (admin != null)
             {
                 Session["ad_id"] = admin.ad_id.ToString();
-                return RedirectToAction("index","Home");
+
+                return RedirectToAction("ViewProduct","Admin");
             }
             else
             {
@@ -62,7 +63,7 @@ namespace Ecommerce.Controllers
                     string extension = Path.GetExtension(imgfile.FileName);
                     if (extension.ToLower().Equals(".jpg") || extension.ToLower().Equals(".png")) {
 
-                        _path = "~/UploadedFiles" + Path.GetFileName(DateTime.Now.ToString("dd/MM/yy MM") + Session.SessionID + imgfile.FileName).Replace(" ", "").Replace(":", "");
+                        _path = "~/UploadedFiles/" + Path.GetFileName(DateTime.Now.ToString("dd/MM/yy MM") + Session.SessionID + imgfile.FileName).Replace(" ", "").Replace(":", "");
                         imgfile.SaveAs(Server.MapPath(_path));
 
                     }

@@ -11,7 +11,8 @@ namespace Ecommerce.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class tbl_category
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -21,9 +22,14 @@ namespace Ecommerce.Models
         }
     
         public int cate_id { get; set; }
+        [Required(ErrorMessage = "*")]
+        [Display(Name = "Category Name")]
         public string cate_name { get; set; }
+
         public int cate_Statu { get; set; }
+        [Display(Name = "Category Image")]
         public string cate_img { get; set; }
+
         public Nullable<int> cate_fk_ad { get; set; }
     
         public virtual tbl_admin tbl_admin { get; set; }

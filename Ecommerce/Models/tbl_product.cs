@@ -20,14 +20,19 @@ namespace Ecommerce.Models
         public int prod_id { get; set; }
 
         [Required(ErrorMessage = "*")]
+        [Display(Name = "Product Name")]
         public string prod_name { get; set; }
+
+        [Display(Name = "Product Image")]
         public string prod_img { get; set; }
 
         [Required(ErrorMessage = "*")]
+        [Display(Name = "Description")]
         public string prod_description { get; set; }
 
         [Required(ErrorMessage = "*")]
         [DataType(DataType.Currency)]
+        [Display(Name = "Price")]
 
         public Nullable<double> prod_price { get; set; }
 

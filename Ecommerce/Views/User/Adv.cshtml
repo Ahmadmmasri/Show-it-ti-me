@@ -5,7 +5,7 @@
     ViewBag.Title = "Adv";
 }
 
-@using (@Html.BeginForm("Adv","User"))
+@using (@Html.BeginForm("Adv", "User"))
 
 {
     <div class="form-inline navbar-form navbar-right" style="margin-top:8px">
@@ -13,18 +13,17 @@
         <button class="btn btn-warning btn-sm" type="submit">Search</button>
     </div>
 }
-
+@{int Founditems = Model.Count(); }
+<h4 style="float:right;">@Founditems Results found</h4>
 <h2>Adv</h2>
-<link href="~/Content/pagination.css" rel="stylesheet" />
 
+<link href="~/Content/pagination.css" rel="stylesheet" />
 <div class="row" style="margin-bottom:40px">
-   @{int Founditems = 0; }
     @if (Model != null)
     {
         foreach (var item in Model)
         {
-            Founditems++;
-            <div class="col-lg-4 col-md-4" style="height:200px; margin-top:100px">
+            <div class="col-lg-4 col-md-4" style="height:300px; margin-top:60px">
                 <img src="@Url.Content(item.prod_img)" style="height:100%; width:100%; border-radius:50px;" />
                 <h4 style="color:#808080; font-family:'Arial Rounded MT'; text-align:center; ">
                     @Html.ActionLink(item.prod_name, "ViewAd", new { id = item.prod_id })
@@ -32,10 +31,8 @@
 
             </div>
         }
-        <h4>@Founditems Results found</h4>
+        <br />
     }
-
-
 </div>
 
 <div id="container" style="margin-left:20px">
