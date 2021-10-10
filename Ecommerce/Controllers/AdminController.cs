@@ -88,6 +88,18 @@ namespace Ecommerce.Controllers
         }
 
 
+        public void Delete(int id)
+        {
+          var category=  db.tbl_category.Find(id);
+            if (category != null)
+            {
+                db.tbl_category.Remove(category);
+                db.SaveChanges();
+            }
+            RedirectToAction("ViewProduct","Admin");
+
+        }
+
         public ActionResult ViewProduct(int? page) {
             int pagesize = 10, pageindex = 1;
             pageindex = page.HasValue ? Convert.ToInt32(page) : 1;
